@@ -1,0 +1,76 @@
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+h1 {
+    color: #3b3b3b;
+    font-size: 2.2rem;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #e0e7ff;
+}
+
+.options { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.options button {
+    background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 32px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.12);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.options button:hover, .options button:focus {
+    background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.18);
+}
+
+.chatbot {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .options {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .container {
+        padding-top: 24px;
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+    .options button {
+        width: 90vw;
+        font-size: 1rem;
+        padding: 14px 0;
+    }
+}

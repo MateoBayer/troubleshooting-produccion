@@ -1,0 +1,49 @@
+my-app/
+├── node_modules/
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── assets/
+│   │   ├── fonts/
+│   │   ├── images/
+│   │   └── ...
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Button/
+│   │   │   ├── Header/
+│   │   │   └── ...
+│   │   ├── pages/
+│   │   │   ├── HomePage/
+│   │   │   ├── AboutPage/
+│   │   │   └── ...
+│   │   └── ...
+│   ├── config/
+│   │   ├── env.config.js
+│   │   └── ...
+│   ├── constants/
+│   │   ├── routes.js
+│   │   └── ...
+│   ├── contexts/
+│   │   ├── AuthContext.js
+│   │   └── ...
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   └── ...
+│   ├── services/
+│   │   ├── api.js
+│   │   └── ...
+│   ├── styles/
+│   │   ├── global.css
+│   │   ├── mixins.css
+│   │   └── ...
+│   ├── utils/
+│   │   ├── formatDate.js
+│   │   └── ...
+│   ├── App.js
+│   ├── index.js
+│   └── ...
+├── .gitignore
+├── package.json
+├── package-lock.json
