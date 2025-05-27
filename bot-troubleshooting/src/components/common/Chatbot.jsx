@@ -1,5 +1,7 @@
 // Chatbot.jsx
 import React, { useState } from 'react';
+import "../../services/mgaApi"; // Import the API service
+import './Chatbot.css'; // Import the CSS file
 
 export default function Chatbot({ bot }) {
   const [messages, setMessages] = useState([]);
@@ -26,24 +28,35 @@ export default function Chatbot({ bot }) {
   };
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: 16, borderRadius: 8, width: 400 }}>
-      <h2>{bot.name}</h2>
-      <div style={{ minHeight: 120, marginBottom: 16 }}>
+    <div className="chatbot-container">
+      <h2 className="chatbot-title">{bot.name}</h2>
+      <div className="chatbot-messages">
         {messages.map((msg, i) => (
-          <div key={i} style={{ textAlign: msg.from === 'user' ? 'right' : 'left' }}>
+          <div
+            key={i}
+            className={`chatbot-message ${msg.from}`}
+          >
             <b>{msg.from === 'user' ? 'You' : bot.name}:</b> {msg.text}
           </div>
         ))}
       </div>
-      <input
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        onKeyDown={e => e.key === 'Enter' && sendMessage()}
-        disabled={loading}
-        style={{ width: '80%' }}
-        placeholder="Type your message..."
-      />
-      <button onClick={sendMessage} disabled={loading || !input.trim()}>Send</button>
+      <div className="chatbot-input-row">
+        <input
+          className="chatbot-input"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && sendMessage()}
+          disabled={loading}
+          placeholder="Type your message..."
+        />
+        <button
+          className="chatbot-send-btn"
+          onClick={sendMessage}
+          disabled={loading || !input.trim()}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 }

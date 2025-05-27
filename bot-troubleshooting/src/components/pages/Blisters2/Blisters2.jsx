@@ -3,12 +3,12 @@ import Chatbot from '../../common/Chatbot';
 import "./Blisters2.css"
 
 const chatbots = [
-  { name: 'Calefacción y Moldeo', apiUrl: 'https://api.example.com/support' },
-  { name: 'Alimentación de Comprimidos', apiUrl: 'https://api.example.com/sales' },
-  { name: 'Sellado Blistera', apiUrl: 'https://api.example.com/hr' },
-  { name: 'Codificado Blistera', apiUrl: 'https://api.example.com/hr' },
-  { name: 'Corte y Troquelado', apiUrl: 'https://api.example.com/hr' },
-  { name: 'Transferencia de Blisters', apiUrl: 'https://api.example.com/hr' },
+  { name: 'Calefacción y Moldeo', botId: 'ba97c6a6-53a4-418d-95b6-08bf787b4ac8' },
+  { name: 'Alimentación de Comprimidos', botId: 'https://api.example.com/sales' },
+  { name: 'Sellado Blistera', botId: 'https://api.example.com/hr' },
+  { name: 'Codificado Blistera', botId: 'https://api.example.com/hr' },
+  { name: 'Corte y Troquelado', botId: 'https://api.example.com/hr' },
+  { name: 'Transferencia de Blisters', botId: 'https://api.example.com/hr' },
 ];
 
 export default function Blisters2() {
@@ -22,10 +22,11 @@ export default function Blisters2() {
           <button
             key={bot.name}
             onClick={() => setSelectedBot(bot)}
-            style={{
+            className={`${selectedBot?.name === bot.name ? ' selected-bot' : ''}`}
+            /*style={{
               fontWeight: selectedBot?.name === bot.name ? 'bold' : undefined,
               boxShadow: selectedBot?.name === bot.name ? '0 0 0 3px #34d399' : undefined,
-            }}
+            }}*/
           >
             {bot.name}
           </button>
@@ -35,15 +36,7 @@ export default function Blisters2() {
         {selectedBot ? (
           <Chatbot bot={selectedBot} />
         ) : (
-          <div style={{
-            color: '#256d4f',
-            fontSize: '1.1rem',
-            marginTop: 32,
-            background: 'rgba(52, 211, 153, 0.08)',
-            padding: 24,
-            borderRadius: 12,
-            boxShadow: '0 2px 8px #a7f3d0'
-          }}>
+          <div className="info-message">
             Selecciona un área para comenzar a chatear con el bot de Blisters 2.
           </div>
         )}
