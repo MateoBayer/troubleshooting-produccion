@@ -1,4 +1,5 @@
 // MGA API service functions
+import { botList } from './botList';
 
 export async function postMessage(apiUrl, message) {
   const res = await fetch(apiUrl, {
@@ -15,8 +16,12 @@ export async function postMessage(apiUrl, message) {
 
 // POST question to assistant
 export async function askQuestionToAssistant(messages, id) {
+    //const id = botList[botName];
+    console.log("Entro aca, id: ", id);
+
+    if (!id) throw new Error('Unknown bot name');
     try {
-        const response = await fetch('https://chat.int.bayer.com/api/v2/chat/agent', {  // Replace with actual API endpoint
+        const response = await fetch('https://chat.int.bayer.com/api/v2/chat/agent', {
             method: 'POST',
             headers: {
                 'accept': 'application/json',
@@ -26,19 +31,19 @@ export async function askQuestionToAssistant(messages, id) {
             body: JSON.stringify({
                 messages: messages.map(msg => ({
                     role: msg.isUser ? 'user' : 'system',
-                    role: 'user',
                     content: msg.text
                 })),
                 assistant_id: id,
-                model: 'gemini-2.0-flash-001',
+                model: 'gpt-4o',
             }),
         });
 
         if (!response.ok) {
+            console.log("Error en la respuesta de la API:", response);
             throw new Error('API request failed');
         }
-
         const data = await response.json();
+        console.log("Respuesta de la API:", data);
         return data.choices[0]["message"]["content"]; // Adjust according to actual API response structure
     } catch (error) {
         console.error('API Error:', error);

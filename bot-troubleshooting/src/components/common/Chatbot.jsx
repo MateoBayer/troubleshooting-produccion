@@ -2,6 +2,16 @@
 import React, { useState } from 'react';
 import "../../services/mgaApi"; // Import the API service
 import './Chatbot.css'; // Import the CSS file
+import { askQuestionToAssistant } from '../../services/mgaApi';
+import ReactMarkdown from 'react-markdown';
+
+const Message = ({ key, isUser, text }) => {
+  return (
+    <div className={`chatbot-message ${isUser ? 'user' : 'bot'}`}>
+      <b>{isUser ? 'Usted' : 'Bot'}:</b> <ReactMarkdown>{text}</ReactMarkdown>
+    </div>
+  );
+};
 
 export default function Chatbot({ bot }) {
   const [messages, setMessages] = useState([]);
@@ -10,18 +20,24 @@ export default function Chatbot({ bot }) {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-    setMessages([...messages, { from: 'user', text: input }]);
+    const newMessage = [
+      ...messages,
+      { isUser: true, text: input }
+    ]
+    setMessages(newMessage);
     setLoading(true);
+    
     try {
-      const res = await fetch(bot.apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      });
-      const data = await res.json();
-      setMessages((msgs) => [...msgs, { from: 'bot', text: data.reply }]);
+      const response = await askQuestionToAssistant(newMessage, bot.id);
+      setMessages(prevMessages => [
+                ...prevMessages,
+                { text: response, isUser: false }
+            ]);
     } catch (e) {
-      setMessages((msgs) => [...msgs, { from: 'bot', text: 'Error contacting API.' }]);
+      setMessages(prevMessages => [
+        ...prevMessages,
+        { text: 'Error contacting API. Error: ' + e.message, isUser: false, isError: true }
+      ]);
     }
     setInput('');
     setLoading(false);
@@ -32,12 +48,19 @@ export default function Chatbot({ bot }) {
       <h2 className="chatbot-title">{bot.name}</h2>
       <div className="chatbot-messages">
         {messages.map((msg, i) => (
+          <Message 
+            key={i} 
+            isUser={msg.isUser} 
+            text={msg.text} 
+          />
+          /*
           <div
             key={i}
-            className={`chatbot-message ${msg.from}`}
+            className={`chatbot-message ${msg.isUser ? 'user' : 'bot'}`}
           >
-            <b>{msg.from === 'user' ? 'You' : bot.name}:</b> {msg.text}
+            <b>{msg.isUser ? 'Usted' : bot.name}:</b> {msg.text}
           </div>
+          */
         ))}
       </div>
       <div className="chatbot-input-row">
@@ -47,14 +70,14 @@ export default function Chatbot({ bot }) {
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && sendMessage()}
           disabled={loading}
-          placeholder="Type your message..."
+          placeholder="Escribi tu mensaje..."
         />
         <button
           className="chatbot-send-btn"
           onClick={sendMessage}
           disabled={loading || !input.trim()}
         >
-          Send
+          Enviar
         </button>
       </div>
     </div>

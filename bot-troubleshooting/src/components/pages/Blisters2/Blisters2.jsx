@@ -3,12 +3,12 @@ import Chatbot from '../../common/Chatbot';
 import "./Blisters2.css"
 
 const chatbots = [
-  { name: 'Calefacción y Moldeo', botId: 'ba97c6a6-53a4-418d-95b6-08bf787b4ac8' },
-  { name: 'Alimentación de Comprimidos', botId: 'https://api.example.com/sales' },
-  { name: 'Sellado Blistera', botId: 'https://api.example.com/hr' },
-  { name: 'Codificado Blistera', botId: 'https://api.example.com/hr' },
-  { name: 'Corte y Troquelado', botId: 'https://api.example.com/hr' },
-  { name: 'Transferencia de Blisters', botId: 'https://api.example.com/hr' },
+  { name: 'Calefacción y Moldeo', id: 'ba97c6a6-53a4-418d-95b6-08bf787b4ac8' },
+  { name: 'Alimentación de Comprimidos', id: 'https://api.example.com/sales' },
+  { name: 'Sellado Blistera', id: 'https://api.example.com/hr' },
+  { name: 'Codificado Blistera', id: 'https://api.example.com/hr' },
+  { name: 'Corte y Troquelado', id: 'https://api.example.com/hr' },
+  { name: 'Transferencia de Blisters', id: 'https://api.example.com/hr' },
 ];
 
 export default function Blisters2() {
