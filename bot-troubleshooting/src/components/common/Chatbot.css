@@ -69,6 +69,11 @@
   font-weight: 600;
 }
 
+.loading-indicator {
+    padding: 10px;
+    color: #666;
+}
+
 .chatbot-input-row {
   display: flex;
   gap: 10px;

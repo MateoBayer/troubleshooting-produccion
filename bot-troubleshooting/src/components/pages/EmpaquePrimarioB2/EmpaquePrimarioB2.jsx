@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Chatbot from '../../common/Chatbot';
-import "./Blisters2.css"
+import "./EmpaquePrimarioB2.css"
 
 const chatbots = [
   { name: 'Calefacción y Moldeo', id: 'ba97c6a6-53a4-418d-95b6-08bf787b4ac8' },
@@ -11,12 +11,12 @@ const chatbots = [
   { name: 'Transferencia de Blisters', id: 'https://api.example.com/hr' },
 ];
 
-export default function Blisters2() {
+export default function EmpaquePrimarioB2() {
   const [selectedBot, setSelectedBot] = useState(null);
 
   return (
     <div className='container'>
-      <h1>Blisters 2: ¿Con qué área necesitas ayuda?</h1>
+      <h1>Blisters 2 - Empaque Primario: ¿Con qué área necesitas ayuda?</h1>
       <div className='options'>
         {chatbots.map(bot => (
           <button
@@ -33,7 +33,7 @@ export default function Blisters2() {
           <Chatbot key={selectedBot.id} bot={selectedBot} />
         ) : (
           <div className="info-message">
-            Selecciona un área para comenzar a chatear con el bot de Blisters 2.
+            Selecciona un área para comenzar a chatear con el bot de Empaque Primario - B2.
           </div>
         )}
       </div>

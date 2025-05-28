@@ -1,0 +1,14 @@
+.info-message {
+    color: #256d4f;
+    font-size: 1.1rem;
+    margin-top: 32px;
+    background: rgba(52, 211, 153, 0.08);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #a7f3d0;
+}
+
+.options button.selected-bot {
+    font-weight: bold;
+    box-shadow: 0 0 0 3px #34d399;
+}

@@ -5,10 +5,10 @@ import './Chatbot.css'; // Import the CSS file
 import { askQuestionToAssistant } from '../../services/mgaApi';
 import ReactMarkdown from 'react-markdown';
 
-const Message = ({ key, isUser, text }) => {
+const Message = ({ isUser, text, botName }) => {
   return (
     <div className={`chatbot-message ${isUser ? 'user' : 'bot'}`}>
-      <b>{isUser ? 'Usted' : 'Bot'}:</b> <ReactMarkdown>{text}</ReactMarkdown>
+      <b>{isUser ? 'Usted' : botName}:</b> <ReactMarkdown>{text}</ReactMarkdown>
     </div>
   );
 };
@@ -51,17 +51,15 @@ export default function Chatbot({ bot }) {
           <Message 
             key={i} 
             isUser={msg.isUser} 
-            text={msg.text} 
+            text={msg.text}
+            botName={bot.name}
           />
-          /*
-          <div
-            key={i}
-            className={`chatbot-message ${msg.isUser ? 'user' : 'bot'}`}
-          >
-            <b>{msg.isUser ? 'Usted' : bot.name}:</b> {msg.text}
-          </div>
-          */
         ))}
+        {loading && (
+          <div className="loading-indicator">
+              <span>Pensando...</span>
+          </div>
+      )}
       </div>
       <div className="chatbot-input-row">
         <input
