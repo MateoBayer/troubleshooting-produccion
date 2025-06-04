@@ -17,7 +17,8 @@ export default function ChatbotPage() {
 
   return (
     <div className='container'>
-      <h1>Selecciona un bot para Troubleshooting</h1>
+      <h1>Bienvenido al portal de asistentes para Troubleshooting</h1>
+      <h2>Selecciona la linea correspondiente</h2>
       <div className='options'>
         {lines.map(bot => (
           <button key={bot.id} onClick={() => navigate(`/${bot.id}`)}>

@@ -19,6 +19,18 @@ body {
 
 h1 {
     color: #3b3b3b;
+    font-size: 3.2rem;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #e0e7ff;
+    text-align: center;
+    text-decoration: underline;
+    align-self: flex-start;
+    width: 100%;
+}
+
+h2 {
+    color: #3b3b3b;
     font-size: 2.2rem;
     margin-bottom: 32px;
     letter-spacing: 1px;

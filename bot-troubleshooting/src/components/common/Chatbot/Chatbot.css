@@ -5,10 +5,11 @@
   border: none;
   box-shadow: 0 4px 24px rgba(99, 102, 241, 0.10);
   border-radius: 20px;
-  width: 100%;
-  max-width: 700px; /* Increased width */
-  min-height: 480px; /* Increased height */
-  padding: 20px 40px 36px 40px; /* More padding for a spacious look */
+  width: 95%;
+  max-width: 1000px; /* Much wider */
+  min-width: 800px;
+  min-height: 480px; /* Back to original height */
+  padding: 20px 80px 36px 80px; /* More horizontal padding for width */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -19,19 +20,20 @@
   color: #6366f1;
   font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   text-align: center;
   letter-spacing: 1px;
   text-shadow: 0 2px 8px #e0e7ff;
 }
 
 .chatbot-messages {
-  min-height: 260px; /* Increased from 140px */
-  max-height: 440px; /* Increased from 260px */
+  min-height: 260px; /* Back to original height */
+  max-height: 440px; /* Back to original height */
   margin-bottom: 18px;
   background: #fff;
   border-radius: 12px;
-  padding: 24px 16px; /* More padding for a spacious look */
+  padding: 24px 32px; /* More horizontal padding */
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
   overflow-y: auto;
 }
@@ -120,9 +122,31 @@
   box-shadow: 0 6px 18px rgba(99, 102, 241, 0.16);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1600px) {
   .chatbot-container {
     max-width: 98vw;
+    padding: 20px 2vw 18px 2vw;
+  }
+  .chatbot-messages {
+    padding: 18px 8px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .chatbot-container {
+    max-width: 98vw;
+    min-height: 500px;
+    padding: 24px 2vw 18px 2vw;
+  }
+  .chatbot-messages {
+    max-height: 400px;
+    padding: 18px 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .chatbot-container {
+    max-width: 99vw;
     min-height: 340px;
     padding: 18px 2vw 14px 2vw;
   }
@@ -138,7 +162,7 @@
     padding: 10px 12px;
   }
   .chatbot-messages {
-    max-height: 260px; /* Increased for mobile as well */
+    max-height: 260px;
     padding: 14px 6px;
   }
 }

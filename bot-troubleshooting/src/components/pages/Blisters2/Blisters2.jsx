@@ -1,41 +1,24 @@
-import React, { useState } from 'react';
-import Chatbot from '../../common/Chatbot';
-import "./Blisters2.css"
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const chatbots = [
-  { name: 'Calefacción y Moldeo', id: 'ba97c6a6-53a4-418d-95b6-08bf787b4ac8' },
-  { name: 'Alimentación de Comprimidos', id: 'https://api.example.com/sales' },
-  { name: 'Sellado Blistera', id: 'https://api.example.com/hr' },
-  { name: 'Codificado Blistera', id: 'https://api.example.com/hr' },
-  { name: 'Corte y Troquelado', id: 'https://api.example.com/hr' },
-  { name: 'Transferencia de Blisters', id: 'https://api.example.com/hr' },
+
+const lines = [
+  { id: 'empaqueprimario', name: 'Empaque Primario' },
+  { id: 'empaquesecundario', name: 'Empaque Secundario' },
 ];
 
 export default function Blisters2() {
-  const [selectedBot, setSelectedBot] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <div className='container'>
-      <h1>Blisters 2: ¿Con qué área necesitas ayuda?</h1>
+      <h2>Selecciona el tipo de empaque</h2>
       <div className='options'>
-        {chatbots.map(bot => (
-          <button
-            key={bot.name}
-            onClick={() => setSelectedBot(bot)}
-            className={`${selectedBot?.name === bot.name ? ' selected-bot' : ''}`}
-          >
+        {lines.map(bot => (
+          <button key={bot.id} onClick={() => navigate(`/blisters2/${bot.id}`)}>
             {bot.name}
           </button>
         ))}
-      </div>
-      <div className='chatbot'>
-        {selectedBot ? (
-          <Chatbot key={selectedBot.id} bot={selectedBot} />
-        ) : (
-          <div className="info-message">
-            Selecciona un área para comenzar a chatear con el bot de Blisters 2.
-          </div>
-        )}
       </div>
     </div>
   );

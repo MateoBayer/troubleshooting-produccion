@@ -1,0 +1,29 @@
+/* Navbar.css - Simple navigation bar styling */
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: #f1f5ff;
+  border-bottom: 1.5px solid #c7d2fe;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.04);
+}
+
+.nav-btn {
+  background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.nav-btn:hover, .nav-btn:focus {
+  background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+  transform: translateY(-1px) scale(1.03);
+}

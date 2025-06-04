@@ -1,8 +1,8 @@
 // Chatbot.jsx
 import React, { useState } from 'react';
-import "../../services/mgaApi"; // Import the API service
+import "../../../services/mgaApi"; // Import the API service
 import './Chatbot.css'; // Import the CSS file
-import { askQuestionToAssistant } from '../../services/mgaApi';
+import { askQuestionToAssistant } from '../../../services/mgaApi';
 import ReactMarkdown from 'react-markdown';
 
 const Message = ({ isUser, text, botName }) => {

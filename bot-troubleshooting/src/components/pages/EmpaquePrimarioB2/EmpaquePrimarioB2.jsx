@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Chatbot from '../../common/Chatbot';
+import Chatbot from '../../common/Chatbot/Chatbot';
 import "./EmpaquePrimarioB2.css"
 
 const chatbots = [
@@ -16,7 +16,7 @@ export default function EmpaquePrimarioB2() {
 
   return (
     <div className='container'>
-      <h1>Blisters 2 - Empaque Primario: ¿Con qué área necesitas ayuda?</h1>
+      <h2>Blisters 2 - Empaque Primario: ¿Con qué área necesitas ayuda?</h2>
       <div className='options'>
         {chatbots.map(bot => (
           <button
